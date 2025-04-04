@@ -1,0 +1,17 @@
+docker run -it --rm --network host --privileged centos bash
+    1  yum update
+    2  cd /etc/yum.repos.d/
+    3  ls -l
+    4  grep mirrorList *
+    5  cat CentOS-Linux-AppStream.repo
+    6  grep mirrorlist *
+    7  sed -i 's/mirrorlist/#mirrorlist/g'
+    8  sed -i 's/mirrorlist/#mirrorlist/g' *
+    9  sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' *
+   10  yum update
+   11  yum-config-manager --enable rhel-server-rhscl-11-rpms
+   12  yum install yum-utils
+   13  yum-config-manager --enable rhel-server-rhscl-11-rpms
+   14  subscription-manager list --available
+   15  history
+[

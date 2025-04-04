@@ -1,0 +1,17 @@
+# echo .ssh_login
+DOCKER="$OSTYPE".docker
+function is_interactive { if [[ -n $PS1 ]]; then return 0; else return 1; fi }
+
+if is_interactive; then
+	[[ -r ~/.bashrc ]] && . ~/.bashrc
+
+	RED="\[\033[0;31m\]"
+	RED_BOLD="\[\033[1;31m\]"
+	GREEN="\[\033[0;32m\]"
+	YELLOW="\[\033[0;33m\]"
+	BLUE="\[\033[0;34m\]"
+	MAGENTA="\[\033[0;35m\]"
+	CYAN="\[\033[0;36m\]"
+	NO_COLOUR="\[\033[0m\]"
+	export PS1="$RED_BOLD\u$NO_COLOUR@$RED_BOLD\h: $BLUE\w $RED\$(parse_git_branch)$NO_COLOUR\n$ "
+fi
