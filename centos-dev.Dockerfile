@@ -1,11 +1,11 @@
 # docker build -t devel -f ./devel.Dockerfile --build-arg HOME="$HOME" --build-arg USER_ID=$(id -u) --build-arg USER_NAME="$(id -un)" .
 # docker run --rm -it -v"$HOME":"$HOME" -w"$PWD" devel bash
-# docker run --rm -v"$HOME":"$HOME" -w"$PWD" devel g++ -c -fdump-tree-original-raw nvidia-set2.cpp
+# docker run --rm -v"$HOME":"$HOME" -w"$PWD" devel g++ -c -fdump-tree-original-raw foo.cpp
 #
 # # Reuse container:
 # docker container create --privileged --hostname devel --interactive --tty --name devel --volume $HOME:$HOME --network host devel
 # docker container start devel
-# docker exec -w"$PWD" devel g++ -c -fdump-tree-original-raw nvidia-set2.cpp
+# docker exec -w"$PWD" devel g++ -c -fdump-tree-original-raw foo.cpp
 
 FROM centos:7
 
